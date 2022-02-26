@@ -1,10 +1,13 @@
+import { Container } from '@mui/material';
 import './App.css';
 import Movies from './components/Movies/Movies';
 
 function App() {
   return (
     <div className="App">
-      <Movies />
+      <Container>
+        <Movies />
+      </Container>
     </div>
   );
 }

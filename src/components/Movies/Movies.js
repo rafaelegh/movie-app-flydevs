@@ -3,6 +3,7 @@ import { ThemeProvider } from '@mui/system';
 import {  createTheme } from "@mui/material/styles";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import SingleContent from "../SingleContent/SingleContent";
 
 
 const darkTheme = createTheme({
@@ -37,6 +38,10 @@ const Movies = () => {
                 }}
             >
             </TextField>
+
+            <div className="Movies">
+                <SingleContent />
+            </div>
         </ThemeProvider>
     </>
   )

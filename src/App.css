@@ -8,6 +8,10 @@
   src: local('Gilroy'), url(./../fonts/Gilroy-FREE/Gilroy-Light.otf) format('woff');
 }
 
+p{
+  margin: 0;
+}
+
 .App{
   min-height: 100vh;
   background-color: #191926;
