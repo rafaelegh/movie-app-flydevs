@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
-import './App.css';
 import Movies from './components/Movies/Movies';
+import './App.css';
 
 function App() {
   return (
