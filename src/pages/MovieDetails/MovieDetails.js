@@ -13,9 +13,9 @@ const MovieDetails = () => {
                 <div className="storyline">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.</div>
             </div>
             <div className="cast-container">
-                <div className="cast-title">
-                    <p>Cast</p>
-                    <p>See All</p>
+                <div className="cast-title-container">
+                    <p className='cast-title'>Cast</p>
+                    <p className='see-all'>See All</p>
                 </div>
                 <div className="cast"></div>
             </div>
