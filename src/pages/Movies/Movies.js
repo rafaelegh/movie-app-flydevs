@@ -1,9 +1,9 @@
 import { TextField } from "@mui/material"
 import { ThemeProvider } from '@mui/system';
-import {  createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
-import SingleContent from "../SingleContent/SingleContent";
+import SingleContent from "../../components/SingleContent/SingleContent";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Movies.css"
@@ -41,7 +41,7 @@ const Movies = () => {
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     setGenres(data.genres);
-    console.log('genres: ', genres);
+    //console.log('genres: ', genres);
   }
 
   const filterGenres = (genreIds) => {
