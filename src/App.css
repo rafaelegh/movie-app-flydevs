@@ -12,6 +12,10 @@ p{
   margin: 0;
 }
 
+a{
+  text-decoration: none;
+  color: unset;
+}
 .App{
   min-height: 100vh;
   background-color: #191926;

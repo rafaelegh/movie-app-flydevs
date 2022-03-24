@@ -1,10 +1,4 @@
-.SingleContent{
-    width: calc((100% / 2) - 6px);
-    border-radius: 8px;
-    border: 1px solid #63637580;
-    font-family: GilroyBold;
-    margin-bottom: 11px;
-}
+
 .MuiIconButton-colorPrimary{
     color: maroon;
 }

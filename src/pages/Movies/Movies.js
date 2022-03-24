@@ -7,6 +7,7 @@ import SingleContent from "../../components/SingleContent/SingleContent";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Movies.css"
+import { Link } from "react-router-dom";
 
 const darkTheme = createTheme({
     palette: {
@@ -86,14 +87,19 @@ const Movies = () => {
           <div className="Movies">
               {
                 content && content.map(c => 
-                  <SingleContent
+                  <Link 
                     key={c.id} 
-                    id={c.id} 
-                    poster={c.poster_path} 
-                    title={c.title || c.name} 
-                    rating={c.vote_average}
-                    genres={filterGenres(c.genre_ids)} 
-                  />
+                    className="SingleContent" 
+                    to={`/movies/${c.id}`}
+                  >
+                    <SingleContent
+                      id={c.id} 
+                      poster={c.poster_path} 
+                      title={c.title || c.name} 
+                      rating={c.vote_average}
+                      genres={filterGenres(c.genre_ids)} 
+                    />                  
+                  </Link>
                 )
               }
           </div>

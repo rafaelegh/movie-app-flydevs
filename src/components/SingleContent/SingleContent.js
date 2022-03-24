@@ -26,7 +26,7 @@ const SingleContent = ({poster, title, rating, genres}) => {
   }
 
   return (
-    <div className="SingleContent">
+    <div>
       <div className='poster-container'>
         <img
             className='poster' 
