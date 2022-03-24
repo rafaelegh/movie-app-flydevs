@@ -1,29 +1,18 @@
-import './SingleContent.css'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-//import poster from './../../img/avengers.png'
-import { IconButton, Rating } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
+import GenresRating from '../GenresRating/GenresRating'
+import { IconButton } from '@mui/material';
 import { useState } from 'react';
-import { ThemeProvider, styled } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import theme from '../themes';
 import { img_154, unavailable } from '../config/config';
 
-const StyledRating = styled(Rating)({
-  '& .MuiRating-iconFilled': {
-    color: '#FF3365',
-  },
-  '& .MuiRating-iconEmpty': {
-    color: '#6D6D80',
-  },
-});
+import './SingleContent.css'
 
 const SingleContent = ({poster, title, rating, genres}) => {
 
   const [liked, setLiked] = useState(false);
 
-  const toggleLik = () => {
-    setLiked(!liked);
-  }
+  const toggleLik = () => setLiked(!liked);
 
   return (
     <div>
@@ -54,21 +43,8 @@ const SingleContent = ({poster, title, rating, genres}) => {
           </ThemeProvider>
         </IconButton>
 
+        <GenresRating size={false} genres={genres} rating={rating} />
 
-        <div className='other-info-container'>
-          <p className='genres'>{genres}</p>
-          <div className='rating-reviews'>
-            <StyledRating
-              name="customized-color"
-              readOnly
-              size='small'
-              value={rating/2 || 0}
-              icon={<StarIcon fontSize="inherit" />}
-              emptyIcon={<StarIcon fontSize="inherit" />}
-            />
-            <p className='reviews'>98 Reviews</p>
-          </div>
-        </div>
       </div>
       
       <div className='main-info'>

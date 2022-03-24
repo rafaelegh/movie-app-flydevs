@@ -51,17 +51,13 @@ const Movies = () => {
 
     const filteredGenres = genreIds.map(genreId => {
       const genreObj = genres.filter(genre => {
-        return genre.id === genreId ? genre.name : '';
+        return genre.id === genreId ? genre : '';
       });
-      return genreObj[0] ? genreObj[0].name : genreObj[0];
+      return genreObj[0];
     });
-    /*console.log('genres ids: ',genreIds);
-    console.log('filtered genres: ',filteredGenres);*/
-    const cleanGenres = filteredGenres.length > 3 ? filteredGenres.splice(0, 3) : filteredGenres;
-    const unifiedGenres = cleanGenres.reduce((acc, cur) => acc + ', ' + cur);
-    //console.log(unifiedGenres);
-    
-    return unifiedGenres;
+
+    //console.log(filteredGenres);
+    return filteredGenres;
   }
 
   useEffect(() => {

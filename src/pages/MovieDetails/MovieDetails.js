@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { img_92, unavailable } from '../../components/config/config';
+import GenresRating from '../../components/GenresRating/GenresRating';
 import './MovieDetails.css';
 
 const MovieDetails = () => {
@@ -53,7 +54,9 @@ const MovieDetails = () => {
             <div className="trailer-container">
             </div>
             <h2 className="movie-title">{details.title}</h2>
-            <div className="genres"></div>
+
+            <GenresRating size={true} genres={details.genres} rating={details.vote_average} />
+
             <div className="storyline-container">
                 <p className="storyline-title">Storyline</p>
                 <div className="storyline">{details.overview}</div>

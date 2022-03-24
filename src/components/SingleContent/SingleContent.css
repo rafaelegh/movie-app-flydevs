@@ -27,7 +27,7 @@
 .poster{
     width: 100%;
 }
-
+/*
 .other-info-container{
     position: absolute;
     bottom: 8px;
@@ -51,7 +51,7 @@
     color: #6D6D80;
     font-size: 10px;
     margin-left: 6px;
-}
+}*/
 
 .main-info{
     height: 3rem;
