@@ -17,6 +17,7 @@ const SingleContent = ({poster, title, rating, genres}) => {
   return (
     <div>
       <div className='poster-container'>
+        <div className='layer-gradient'></div>
         <img
             className='poster' 
             src={poster ? `${img_154}/${poster}` : unavailable} 

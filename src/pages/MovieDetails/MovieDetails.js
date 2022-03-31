@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ReactPlayer from 'react-player';
 import { useParams } from 'react-router-dom';
-import { img_92, unavailable } from '../../components/config/config';
+import { img_500, img_92, unavailable } from '../../components/config/config';
 import GenresRating from '../../components/GenresRating/GenresRating';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import './MovieDetails.css';
 
 const MovieDetails = () => {
@@ -52,6 +54,11 @@ const MovieDetails = () => {
     return (
         <>
             <div className="trailer-container">
+                <img
+                    className='trailer' 
+                    src={details.backdrop_path ? `${img_500}/${details.backdrop_path}` : unavailable} 
+                    alt={details.title}
+                />
             </div>
             <h2 className="movie-title">{details.title}</h2>
 

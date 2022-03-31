@@ -10,4 +10,6 @@
     border: 1px solid #63637580;
     font-family: GilroyBold;
     margin-bottom: 11px;
+    background-color: #222232;
+    overflow: hidden;
 }
