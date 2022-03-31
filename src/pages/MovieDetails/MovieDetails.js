@@ -1,10 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { useParams } from 'react-router-dom';
+import { IconButton } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
 import { img_500, img_92, unavailable } from '../../components/config/config';
 import GenresRating from '../../components/GenresRating/GenresRating';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../../components/themes';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import './MovieDetails.css';
 
 const MovieDetails = () => {
@@ -13,9 +18,15 @@ const MovieDetails = () => {
     const [cast, setCast] = useState([]);
     const [videos, setVideos] = useState([]);
     const [seeAll, setSeeAll] = useState(false);
+    const [liked, setLiked] = useState(false);
+    let navigate = useNavigate();
     const {id} = useParams();
 
     let classSeeAll = seeAll ? `all-cast` : `min-cast`;
+
+    const toggleLik = () => setLiked(!liked);
+
+    const goToMoviePage = () => navigate(`/movies`);
 
     const fetchDetails = async () => {
         const { data } = await axios.get(
@@ -54,11 +65,55 @@ const MovieDetails = () => {
     return (
         <>
             <div className="trailer-container">
+                <div className='layer-gradient'></div>
                 <img
                     className='trailer' 
                     src={details.backdrop_path ? `${img_500}/${details.backdrop_path}` : unavailable} 
                     alt={details.title}
                 />
+                <PlayCircleIcon sx={{
+                    fontSize: 72,
+                    position: "absolute",
+                    zIndex: 4,
+                    bottom: "40%",
+                    left: "42%"
+                }}/>
+
+                <IconButton 
+                    aria-label="like"
+                    size='small'
+                    style={{ 
+                        width: '16px',
+                        position: 'absolute',
+                        top: '3.56rem',
+                        right: '1rem' 
+                    }}
+                    color='secondary'
+                    onClick={toggleLik}
+                >
+                    <ThemeProvider theme={theme}>
+                        {   
+                            liked ? 
+                            <FavoriteIcon color='heartFilled'/> :
+                            <FavoriteIcon color='secondary'/>
+                        }  
+                    </ThemeProvider>
+                </IconButton>
+                <IconButton
+                    aria-label="like"
+                    size='small'
+                    style={{ 
+                        width: '16px',
+                        position: 'absolute',
+                        top: '3.56rem',
+                        left: '3rem' 
+                    }}
+                    color='primary'
+                    onClick={goToMoviePage}
+                >   
+                    <ArrowBackIosIcon />
+                    Back
+                </IconButton>
             </div>
             <h2 className="movie-title">{details.title}</h2>
 
