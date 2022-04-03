@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
 import { IconButton } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { img_500, img_92, unavailable } from '../../components/config/config';
@@ -10,21 +9,21 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../components/themes';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { useFavorites } from '../../contexts/FavContext';
 import './MovieDetails.css';
 
 const MovieDetails = () => {
 
     const [details, setDetails] = useState([]);
     const [cast, setCast] = useState([]);
-    const [videos, setVideos] = useState([]);
     const [seeAll, setSeeAll] = useState(false);
-    const [liked, setLiked] = useState(false);
     let navigate = useNavigate();
     const {id} = useParams();
+    const idInt = id * 1;
+
+    const {getFavorite, updateFavorite} = useFavorites();
 
     let classSeeAll = seeAll ? `all-cast` : `min-cast`;
-
-    const toggleLik = () => setLiked(!liked);
 
     const goToMoviePage = () => navigate(`/movies`);
 
@@ -34,14 +33,6 @@ const MovieDetails = () => {
         );
         console.log(data);
         setDetails(data);
-    }
-
-    const fetchVideos = async () => {
-        const { data } = await axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
-        );
-        console.log(data);
-        setVideos(data.results);
     }
 
     const fetchCredits = async () => {
@@ -58,7 +49,6 @@ const MovieDetails = () => {
 
     useEffect(() => {
         fetchDetails();
-        fetchVideos();
         fetchCredits();
     }, []);
 
@@ -89,31 +79,35 @@ const MovieDetails = () => {
                         right: '1rem' 
                     }}
                     color='secondary'
-                    onClick={toggleLik}
+                    onClick={() => updateFavorite(idInt)}
                 >
                     <ThemeProvider theme={theme}>
                         {   
-                            liked ? 
+                            getFavorite(idInt) || false ? 
                             <FavoriteIcon color='heartFilled'/> :
                             <FavoriteIcon color='secondary'/>
                         }  
                     </ThemeProvider>
                 </IconButton>
-                <IconButton
-                    aria-label="like"
-                    size='small'
-                    style={{ 
-                        width: '16px',
-                        position: 'absolute',
-                        top: '3.56rem',
-                        left: '3rem' 
-                    }}
-                    color='primary'
-                    onClick={goToMoviePage}
-                >   
-                    <ArrowBackIosIcon />
-                    Back
-                </IconButton>
+                <ThemeProvider theme={theme}>
+                    <IconButton
+                        aria-label="like"
+                        size='small'
+                        style={{ 
+                            width: '16px',
+                            position: 'absolute',
+                            top: '3.56rem',
+                            left: '3rem',
+                            opacity: 0.5 
+                        }}
+                        color='secondary'
+                        onClick={goToMoviePage}
+                    >   
+                        <ArrowBackIosIcon />
+                        Back
+                    </IconButton>
+                </ThemeProvider>
+
             </div>
             <h2 className="movie-title">{details.title}</h2>
 

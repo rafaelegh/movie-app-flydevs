@@ -1,18 +1,15 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import GenresRating from '../GenresRating/GenresRating'
 import { IconButton } from '@mui/material';
-import { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../themes';
 import { img_154, unavailable } from '../config/config';
-
+import { useFavorites } from '../../contexts/FavContext';
 import './SingleContent.css'
 
-const SingleContent = ({poster, title, rating, genres}) => {
+const SingleContent = ({id, poster, title, rating, genres}) => {
 
-  const [liked, setLiked] = useState(false);
-
-  const toggleLik = () => setLiked(!liked);
+  const {getFavorite, updateFavorite} = useFavorites();
 
   return (
     <div>
@@ -34,10 +31,10 @@ const SingleContent = ({poster, title, rating, genres}) => {
               right: '6px' 
           }}
           color='secondary'
-          onClick={toggleLik}
+          onClick={() => updateFavorite(id)}
         >
           <ThemeProvider theme={theme}>
-            {liked ? 
+            {(getFavorite(id) || false) ? 
               <FavoriteIcon color='heartFilled'/> :
               <FavoriteIcon color='secondary'/>
             }  
