@@ -1,13 +1,11 @@
-import { TextField } from "@mui/material"
+import { Link } from "react-router-dom";
 import { ThemeProvider } from '@mui/system';
 import { createTheme } from "@mui/material/styles";
-import SearchIcon from '@mui/icons-material/Search';
-import InputAdornment from '@mui/material/InputAdornment';
-import SingleContent from "../../components/SingleContent/SingleContent";
 import { useEffect, useState } from "react";
+import SearchBar from '../../components/SearchBar/SearchBar';
+import SingleContent from "../../components/SingleContent/SingleContent";
 import axios from "axios";
 import "./Movies.css"
-import { Link } from "react-router-dom";
 
 const darkTheme = createTheme({
     palette: {
@@ -17,12 +15,6 @@ const darkTheme = createTheme({
       },
     }
 });
-
-const style = {
-  width: '90%',
-  borderRadius: '2rem',
-  margin: '2.5rem 1rem 3rem'
-}
 
 const Movies = () => {
 
@@ -68,37 +60,26 @@ const Movies = () => {
   return (
     <>
       <ThemeProvider theme={darkTheme}>
-          <TextField
-            style={style}
-            InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-            }}
-          >
-          </TextField>
-
-          <div className="Movies">
-              {
-                content && content.map(c => 
-                  <Link 
-                    key={c.id} 
-                    className="SingleContent" 
-                    to={`/movies/${c.id}`}
-                  >
-                    <SingleContent
-                      id={c.id} 
-                      poster={c.poster_path} 
-                      title={c.title || c.name} 
-                      rating={c.vote_average}
-                      genres={filterGenres(c.genre_ids)} 
-                    />                  
-                  </Link>
-                )
-              }
-          </div>
+        <SearchBar />
+        <div className="Movies">
+            {
+              content && content.map(c => 
+                <Link 
+                  key={c.id} 
+                  className="SingleContent" 
+                  to={`/movies/${c.id}`}
+                >
+                  <SingleContent
+                    id={c.id} 
+                    poster={c.poster_path} 
+                    title={c.title || c.name} 
+                    rating={c.vote_average}
+                    genres={filterGenres(c.genre_ids)} 
+                  />                  
+                </Link>
+              )
+            }
+        </div>
       </ThemeProvider>
     </>
   )

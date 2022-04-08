@@ -36,7 +36,7 @@ export function FavProvider({children}) {
             getFavorite, 
             updateFavorite
         }}>
-                {children}  
+            {children}  
         </FavContext.Provider>
     )
 }

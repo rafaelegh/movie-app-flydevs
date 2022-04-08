@@ -14,6 +14,7 @@
 .trailer-container > img{
     width: 100%;
     height: inherit;
+    object-fit: cover;
 }
 
 .movie-title{

@@ -1,10 +1,10 @@
 import { Container } from '@mui/material';
-import Movies from './pages/Movies/Movies';
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Movies from './pages/Movies/Movies';
 import MovieDetails from './pages/MovieDetails/MovieDetails';
 import ActorBio from './pages/ActorBio/ActorBio';
 import { FavProvider } from './contexts/FavContext';
+import './App.css';
 
 function App() {
   return (
