@@ -1,0 +1,31 @@
+
+.other-info-container.big{
+    font-size: 14px;
+    line-height: 20px;
+    margin: 5px auto 1.5rem auto;
+}
+
+.other-info-container.small{
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 8px;
+}
+
+.genres{
+    font-family: GilroyLight;
+    font-weight: 300;
+    color: #FF3466;
+}
+
+.rating-reviews{
+    display: flex;
+    align-items: center;
+}
+
+.reviews{
+    font-family: GilroyBold;
+    color: #6D6D80;
+    margin-left: 6px;
+    text-transform: uppercase;
+}

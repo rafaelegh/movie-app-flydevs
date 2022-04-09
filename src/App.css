@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'GilroyBold';
+  src: url(./../fonts/Gilroy-FREE/Gilroy-ExtraBold.otf) format('woff');
+}
+
+@font-face {
+  font-family: 'GilroyLight';
+  src: url(./../fonts/Gilroy-FREE/Gilroy-Light.otf) format('woff');
+}
+
+p{
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: unset;
+}
+.App{
+  min-height: 100vh;
+  background-color: #191926;
+  color: #fff;
+  font-family: GilroyLight;
+}  
