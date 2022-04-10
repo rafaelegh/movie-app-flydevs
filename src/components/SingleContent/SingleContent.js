@@ -1,55 +1,17 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import GenresRating from '../GenresRating/GenresRating'
-import { IconButton } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import theme from '../themes';
-import { img_154, unavailable } from '../config/config';
-import { useFavorites } from '../../contexts/FavContext';
+import MinContent from '../MinContent/MinContent'
 import './SingleContent.css'
 
 const SingleContent = ({id, poster, title, rating, genres}) => {
 
-  const {getFavorite, updateFavorite} = useFavorites();
-
   return (
-    <div>
-      <div className='poster-container'>
-        <div className='layer-gradient'></div>
-        <img
-            className='poster' 
-            src={poster ? `${img_154}/${poster}` : unavailable} 
-            alt=""
-        />
-        <div className="mpa">13+</div>
-        <IconButton 
-          aria-label="like"
-          size='small'
-          style={{ 
-              width: '16px',
-              position: 'absolute',
-              top: '0',
-              right: '6px' 
-          }}
-          color='secondary'
-          onClick={() => updateFavorite(id)}
-        >
-          <ThemeProvider theme={theme}>
-            {(getFavorite(id) || false) ? 
-              <FavoriteIcon color='heartFilled'/> :
-              <FavoriteIcon color='secondary'/>
-            }  
-          </ThemeProvider>
-        </IconButton>
+    <>
+      <MinContent id={id} poster={poster} rating={rating} genres={genres} />
 
-        <GenresRating size={false} genres={genres} rating={rating} />
-
-      </div>
-      
       <div className='main-info'>
         <b className="title">{title}</b>
         <p className="duration">137 min</p>
       </div>
-    </div>
+    </>
   )
 }
 
