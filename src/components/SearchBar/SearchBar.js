@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import axios from "axios";
@@ -10,10 +10,10 @@ const style = {
     margin: '2.5rem 1rem 3rem'
 }
 
-const SearchBar = () => {
+const SearchBar = ({setContent}) => {
 
-    const [content, setContent] = useState();
-    const[searchText, setSearchText] = useState("");
+    const [searchText, setSearchText] = useState("");
+    const [isSearching, setIsSearching] = useState(false);
 
     const fetchSearch = async () => {
         const {data} = await axios.get(
@@ -23,16 +23,36 @@ const SearchBar = () => {
         );
         console.log(data.results);
         setContent(data.results);
+        setIsSearching(false);
     }
 
     const handleSearch = (e) => {
-        setTimeout(() => {
-            if(e.target.value.length > 2){
-                setSearchText(e.target.value.length);
-                fetchSearch();
+        if(!isSearching) {
+            if(e.target.value.length > 2) {
+                setIsSearching(true);
+                setTimeout(() => {    
+                    setSearchText(prevState => {
+                        if(prevState !== e.target.value) {
+                           return  e.target.value
+                        }
+                    }); 
+                }, 2000);
             }
-        }, 1000);
+            else if(e.target.value.length === 0){
+                setSearchText(e.target.value);
+            }
+        }
     }
+
+    useEffect(() => {
+        if(searchText !== '') {
+            fetchSearch();
+            console.log('buscando' + searchText + ' ...');
+        }
+        else if(searchText === ''){
+            setContent([]);
+        }
+    }, [searchText])
     
 
   return (

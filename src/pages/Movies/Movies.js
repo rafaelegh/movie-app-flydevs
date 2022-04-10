@@ -53,14 +53,18 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    fetchMovies();
-    fetchGenres();
-  },[]);
+    if(content.length === 0) {
+      fetchMovies();
+    }
+    if(genres.length === 0) {
+      fetchGenres();
+    }
+  },[content]);
 
   return (
     <>
       <ThemeProvider theme={darkTheme}>
-        <SearchBar />
+        <SearchBar setContent={setContent} />
         <div className="Movies">
             {
               content && content.map(c => 
