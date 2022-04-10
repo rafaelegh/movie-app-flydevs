@@ -22,12 +22,11 @@
 
 .poster-container{
     position: relative;
-    height: 248px;
 }
 
 .layer-gradient{
     width: 100%;
-    height: inherit;
+    height: 100%;
     position: absolute;
     background: linear-gradient(180deg, rgba(25, 25, 38, 0.0001) 42.31%, #191926 87.5%);
 }

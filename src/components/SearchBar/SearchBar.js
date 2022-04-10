@@ -47,7 +47,7 @@ const SearchBar = ({setContent}) => {
     useEffect(() => {
         if(searchText !== '') {
             fetchSearch();
-            console.log('buscando' + searchText + ' ...');
+            console.log('buscando ' + searchText + '...');
         }
         else if(searchText === ''){
             setContent([]);
