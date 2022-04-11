@@ -30,17 +30,18 @@ export default function SimpleBottomNavigation() {
         }}
         value={value}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          setValue(prevValue => {
+            if(prevValue !== newValue) {
+              return newValue;
+            }
+          });
         }}
       >
         <BottomNavigationAction 
             label="Home" 
             icon={<HomeIcon />}
             style={{ 
-              color: "white", 
-              fontSize: 12
-
-            }} 
+              color: "white"}} 
         />
 
         <BottomNavigationAction 
