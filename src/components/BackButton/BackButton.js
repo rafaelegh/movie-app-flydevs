@@ -2,11 +2,11 @@ import { IconButton } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../components/themes';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useGotoPageMovies } from '../../hooks/useGoToPage';
+import { useGotoMoviesPage } from '../../hooks/useGoToPage';
 
 const BackButton = ({style, text}) => {
 
-    const goToMoviePage = useGotoPageMovies();
+    const goToMoviePage = useGotoMoviesPage();
 
     return (
         <ThemeProvider theme={theme}>

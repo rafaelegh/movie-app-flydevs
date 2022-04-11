@@ -10,7 +10,6 @@ const Favourites = () => {
 
     const {getAllFavourites} = useFavorites();
     const favourites = getAllFavourites();
-    console.log(favourites);
 
     const backButtonStyle = { 
         width: '7px',

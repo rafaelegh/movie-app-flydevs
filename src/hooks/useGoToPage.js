@@ -5,6 +5,10 @@ function useGotoPage(page) {
     return () => navigate(`/${page}`)
 }
 
-export function useGotoPageMovies() {
+export function useGotoMoviesPage() {
    return useGotoPage('movies');
 }
+
+export function useGotoFavouritesPage() {
+    return useGotoPage('favourites');
+ }
