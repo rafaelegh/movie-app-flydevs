@@ -21,4 +21,13 @@ a{
   background-color: #191926;
   color: #fff;
   font-family: GilroyLight;
-}  
+}
+
+h2{
+  font-family: 'GilroyBold';
+  color: #FFFFFF;
+  opacity: 0.75;
+  font-size: 22px;
+  line-height: 24px;
+
+}

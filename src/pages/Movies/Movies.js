@@ -6,6 +6,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import SingleContent from "../../components/SingleContent/SingleContent";
 import axios from "axios";
 import "./Movies.css"
+import FavouritesButton from "../../components/FavouritesButton/FavouritesButton";
 
 const darkTheme = createTheme({
     palette: {
@@ -53,14 +54,18 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    fetchMovies();
-    fetchGenres();
-  },[]);
+    if(content.length === 0) {
+      fetchMovies();
+    }
+    if(genres.length === 0) {
+      fetchGenres();
+    }
+  },[content]);
 
   return (
     <>
       <ThemeProvider theme={darkTheme}>
-        <SearchBar />
+        <SearchBar setContent={setContent} />
         <div className="Movies">
             {
               content && content.map(c => 
@@ -74,7 +79,8 @@ const Movies = () => {
                     poster={c.poster_path} 
                     title={c.title || c.name} 
                     rating={c.vote_average}
-                    genres={filterGenres(c.genre_ids)} 
+                    genres={filterGenres(c.genre_ids)}
+                    overview={c.overview} 
                   />                  
                 </Link>
               )
