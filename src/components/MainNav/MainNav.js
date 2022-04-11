@@ -6,7 +6,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useGotoFavouritesPage, useGotoMoviesPage } from '../../hooks/useGoToPage';
 import HomeIcon from '@mui/icons-material/Home';
 
-
 export default function SimpleBottomNavigation() {
   const [value, setValue] = useState(0);
   const goToMoviePage = useGotoMoviesPage();

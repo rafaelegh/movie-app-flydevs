@@ -6,7 +6,6 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import SingleContent from "../../components/SingleContent/SingleContent";
 import axios from "axios";
 import "./Movies.css"
-import FavouritesButton from "../../components/FavouritesButton/FavouritesButton";
 
 const darkTheme = createTheme({
     palette: {

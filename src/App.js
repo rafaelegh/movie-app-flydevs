@@ -6,7 +6,7 @@ import MovieDetails from './pages/MovieDetails/MovieDetails';
 import ActorBio from './pages/ActorBio/ActorBio';
 import Favourites from './pages/Favourites/Favourites';
 import './App.css';
-import SimpleBottomNavigation from './components/MainNav';
+import SimpleBottomNavigation from './components/MainNav/MainNav';
 
 function App() {
   return (
