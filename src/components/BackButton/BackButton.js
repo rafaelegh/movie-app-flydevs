@@ -4,28 +4,25 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../components/themes';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-const BackButton = () => {
+const BackButton = ({style, text}) => {
 
     let navigate = useNavigate();
-    const goToMoviePage = () => navigate(`/movies`);
+    const goToMoviePage = () => {
+        navigate(`/movies`);
+        console.log('hola')
+    }
 
   return (
     <ThemeProvider theme={theme}>
         <IconButton
             aria-label="like"
             size='small'
-            style={{ 
-                width: '16px',
-                position: 'absolute',
-                top: '3.56rem',
-                left: '3rem',
-                opacity: 0.5 
-            }}
+            style={style}
             color='secondary'
             onClick={goToMoviePage}
         >   
             <ArrowBackIosIcon />
-            Back
+            {!!text ? text : ''}
         </IconButton>
     </ThemeProvider>
   )

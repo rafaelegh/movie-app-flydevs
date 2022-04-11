@@ -20,6 +20,14 @@ const MovieDetails = () => {
     const {id} = useParams();
     const idInt = id * 1;
 
+    const backButtonStyle = { 
+        width: '16px',
+        position: 'absolute',
+        top: '3.56rem',
+        left: '3rem',
+        opacity: 0.5 
+    }
+
     const {getFavorite, updateFavorite} = useFavorites();
 
     let classSeeAll = seeAll ? `all-cast` : `min-cast`;
@@ -77,7 +85,14 @@ const MovieDetails = () => {
                         right: '1rem' 
                     }}
                     color='secondary'
-                    onClick={() => updateFavorite(idInt)}
+                    onClick={() => updateFavorite(
+                        idInt,
+                        details.poster_path,
+                        details.genres,
+                        details.vote_average,
+                        details.title,
+                        details.overview 
+                    )}
                 >
                     <ThemeProvider theme={theme}>
                         {   
@@ -87,7 +102,7 @@ const MovieDetails = () => {
                         }  
                     </ThemeProvider>
                 </IconButton>
-                <BackButton />
+                <BackButton style={backButtonStyle} text={'back'}/>
             </div>
             <h2 className="movie-title">{details.title}</h2>
 

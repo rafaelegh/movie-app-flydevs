@@ -1,7 +1,53 @@
 
 
 .title-back{
-    text-align: center;
     padding-top: 3.25rem;
     margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.favourite{
+    display: flex;
+    border: 1px solid #63637580;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: .75rem;
+}
+
+.min-content{
+    width: calc(100% / 2);
+}
+
+.more-info{
+    flex: 0 1 50%;
+    background-color: #222232;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    align-items: center;
+}
+
+.more-info > .title-overview > .main-info{
+    padding: unset;
+    margin-bottom: 1rem;
+}
+
+.more-info > .title-overview > .overview{
+    font-size: .5rem;
+    font-family: 'GilroyLight';
+    line-height: 12px;
+}
+
+.more-info > button {
+    font-size: 8px;
+    line-height: 24px;
+    background: linear-gradient(149.18deg, #8036E7 -24.9%, #FF3365 89.41%);
+    box-shadow: 0px 8px 16px rgb(0 0 0 / 50%);
+    border-radius: 12px;
+    width: calc(100% - 24px);
+    color: #fff;
+    font-family: 'GilroyBold';
+    border: none;
 }

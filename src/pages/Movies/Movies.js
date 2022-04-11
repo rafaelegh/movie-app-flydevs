@@ -78,7 +78,8 @@ const Movies = () => {
                     poster={c.poster_path} 
                     title={c.title || c.name} 
                     rating={c.vote_average}
-                    genres={filterGenres(c.genre_ids)} 
+                    genres={filterGenres(c.genre_ids)}
+                    overview={c.overview} 
                   />                  
                 </Link>
               )
