@@ -7,7 +7,7 @@ import { img_154, unavailable } from '../config/config';
 import { useFavorites } from '../../contexts/FavContext';
 import './MinContent.css';
 
-const MinContent = ({id, poster, rating, genres}) => {
+const MinContent = ({id, poster, rating, genres, title, overview}) => {
 
     const {getFavorite, updateFavorite} = useFavorites();
 
@@ -30,12 +30,13 @@ const MinContent = ({id, poster, rating, genres}) => {
                 right: '6px' 
             }}
             color='secondary'
-            onClick={() => updateFavorite(id)}
+            onClick={() => updateFavorite(id, poster, genres, rating,title, overview)}
         >
             <ThemeProvider theme={theme}>
-                {(getFavorite(id) || false) ? 
-                <FavoriteIcon color='heartFilled'/> :
-                <FavoriteIcon color='secondary'/>
+                {   
+                    (getFavorite(id) || false) ? 
+                        <FavoriteIcon color='heartFilled'/> :
+                        <FavoriteIcon color='secondary'/>
                 }  
             </ThemeProvider>
         </IconButton>
