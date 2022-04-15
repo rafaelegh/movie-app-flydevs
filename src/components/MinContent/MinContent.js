@@ -9,13 +9,6 @@ import './MinContent.css';
 import { useMoviesContext } from '../../contexts/MoviesContext';
 import { useGenresContext } from '../../contexts/GenresContext';
 
-const styleLikedButton = { 
-    width: '16px',
-    position: 'absolute',
-    top: '0',
-    right: '6px' 
-}
-
 const MinContent = ({id}) => {
 
     const {getFavorite, updateFavorite} = useFavorites();
@@ -28,10 +21,10 @@ const MinContent = ({id}) => {
         title, 
         overview
     } = getMovie(id);
-    
+
     const filteredGenres = filterGenres(genres);
     const handleLiked = () => {
-        updateFavorite(poster, rating, filteredGenres, title, overview);
+        updateFavorite(id, poster, rating, filteredGenres, title, overview);
     }
 
   return (

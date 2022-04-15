@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ThemeProvider } from '@mui/system';
 import { createTheme } from "@mui/material/styles";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import SearchBar from '../../components/SearchBar/SearchBar';
 import SingleContent from "../../components/SingleContent/SingleContent";
 import axios from "axios";

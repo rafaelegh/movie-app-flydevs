@@ -16,7 +16,7 @@ const Favourites = () => {
     }
 
     return (
-      <>
+    <>
         <div className='title-back'>
             <BackButton style={backButtonStyle} />
             <h2>Favourites Movies</h2>
@@ -29,11 +29,6 @@ const Favourites = () => {
                         <div className="min-content">
                             <MinContent 
                                 id={favorite.id}
-                                poster={favorite.poster}
-                                rating={favorite.rating}
-                                genres={favorite.genres}
-                                title={favorite.title}
-                                overview={favorite.overview}
                             />
                         </div>
                         <div className="more-info">
