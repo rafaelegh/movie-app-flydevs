@@ -1,5 +1,3 @@
-import { Favorite } from '@mui/icons-material';
-import React from 'react';
 import BackButton from '../../components/BackButton/BackButton';
 import MainInfo from '../../components/MainInfo/MainInfo';
 import MinContent from '../../components/MinContent/MinContent';
@@ -18,7 +16,7 @@ const Favourites = () => {
     }
 
     return (
-      <>
+    <>
         <div className='title-back'>
             <BackButton style={backButtonStyle} />
             <h2>Favourites Movies</h2>
@@ -26,15 +24,11 @@ const Favourites = () => {
         <div className="favourites-container">
             {
                 favourites && favourites.map(favorite => (
+                    favorite.liked && 
                     <div key={favorite.id} className="favourite">
                         <div className="min-content">
                             <MinContent 
                                 id={favorite.id}
-                                poster={favorite.poster}
-                                rating={favorite.rating}
-                                genres={favorite.genres}
-                                title={favorite.title}
-                                overview={favorite.overview}
                             />
                         </div>
                         <div className="more-info">
