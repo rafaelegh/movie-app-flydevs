@@ -6,7 +6,7 @@ export function useMoviesContext() {
     return useContext(MoviesContext);
 } 
 
-export function MoviesProvider({children}){
+export function MoviesProvider({children}) {
     const [movies, setMovies] = useState([]);
 
     function getAllMovies() {
