@@ -26,6 +26,7 @@ const Favourites = () => {
         <div className="favourites-container">
             {
                 favourites && favourites.map(favorite => (
+                    favorite.liked && 
                     <div key={favorite.id} className="favourite">
                         <div className="min-content">
                             <MinContent 
