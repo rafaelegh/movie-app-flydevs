@@ -1,5 +1,3 @@
-import { Favorite } from '@mui/icons-material';
-import React from 'react';
 import BackButton from '../../components/BackButton/BackButton';
 import MainInfo from '../../components/MainInfo/MainInfo';
 import MinContent from '../../components/MinContent/MinContent';

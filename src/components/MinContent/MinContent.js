@@ -6,10 +6,33 @@ import theme from '../themes';
 import { img_154, unavailable } from '../config/config';
 import { useFavorites } from '../../contexts/FavContext';
 import './MinContent.css';
+import { useMoviesContext } from '../../contexts/MoviesContext';
+import { useGenresContext } from '../../contexts/GenresContext';
 
-const MinContent = ({id, poster, rating, genres, title, overview}) => {
+const styleLikedButton = { 
+    width: '16px',
+    position: 'absolute',
+    top: '0',
+    right: '6px' 
+}
+
+const MinContent = ({id}) => {
 
     const {getFavorite, updateFavorite} = useFavorites();
+    const {getMovie} = useMoviesContext();
+    const {filterGenres} = useGenresContext();
+    const {
+        poster_path: poster, 
+        vote_average: rating, 
+        genre_ids: genres, 
+        title, 
+        overview
+    } = getMovie(id);
+    
+    const filteredGenres = filterGenres(genres);
+    const handleLiked = () => {
+        updateFavorite(poster, rating, filteredGenres, title, overview);
+    }
 
   return (
         <div className='poster-container'>
@@ -30,7 +53,7 @@ const MinContent = ({id, poster, rating, genres, title, overview}) => {
                     right: '6px' 
                 }}
                 color='secondary'
-                onClick={() => updateFavorite(id, poster, genres, rating,title, overview)}
+                onClick={() => handleLiked()}
             >
                 <ThemeProvider theme={theme}>
                     {   
@@ -40,7 +63,7 @@ const MinContent = ({id, poster, rating, genres, title, overview}) => {
                     }  
                 </ThemeProvider>
             </IconButton>
-            <GenresRating size={false} genres={genres} rating={rating} />
+            <GenresRating size={false} genres={filteredGenres} rating={rating} />
         </div>
     )
 }
